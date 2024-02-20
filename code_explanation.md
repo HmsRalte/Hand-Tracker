@@ -59,4 +59,29 @@
    - *self.mp_drawing*: initializes the mdeiapipe drawing utilities module
    - *self.results*: initializes a variable to store the results of hand detection. It is initially set to 'None'.
      
+## 3rd Code Snippet
+def findHands(self, image, draw=True):
+        imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        self.results = self.mp_hands.process(imageRGB)
+        if self.results.multi_hand_landmarks and draw:
+            for handLms in self.results.multi_hand_landmarks:
+                self.mp_drawing.draw_landmarks(image, handLms, mp.solutions.hands.HAND_CONNECTIONS)
+        return image
 
+** We define a method named 'findHands' within the 'handDetector' class.
+- def findHands(self, image, draw = True): Finds and draws landmarks on hands within the provided image
+     - image: The input image (in BGR format) where hands are to be detected.
+     - *BGR format (blue,gree,red) is the default color format in OpenCV*
+     - draw (bool): A flag indicating whetehr to draw landmars on the image (default: True)
+       
+- imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB): converts the BGR image to RGB as the mediapipe Hands model expects RGB input ( if image is already in RGM format this is not needed)
+
+- self.results = self.mp_hands.process(imageRGB): Process the image using the mdeiapipe Hands model
+
+- if self.reults.multi_hand_landmars and draw: Checks if there are multiple hand landmarks and drawing is enabled
+
+- for handLms in self.results.multi_hand_landmarks: Iterates through each set of landmarks for a different hands.
+
+- self.mp_drawing.draw_landmarks(image, handLms, mp.solutions.hands.HAND_CONNECTIONS): Draw landmarks and connections on the image
+
+- return image: Returns the image with hand landmarks drawn (if draw is True)
