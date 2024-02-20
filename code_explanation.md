@@ -1,4 +1,4 @@
-##Firstly, we have to install the libraries that are going to be needed
+## Firstly, we have to install the libraries that are going to be needed
 - pip install opencv-python
 - pip install mediapipe
 - pip install times
@@ -8,7 +8,7 @@
 - import mediapipe as mp
 - import times
 
-##1st code snippet  
+## 1st code snippet  
 class handDetector:  
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
         self.mode = mode  
