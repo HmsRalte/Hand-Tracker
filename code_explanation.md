@@ -3,19 +3,19 @@
 - pip install mediapipe
 - pip install times
 
-##importing the libraries comes next
+### importing the libraries comes next
 - import cv2
 - import mediapipe as mp
 - import times
 
 ## 1st code snippet  
 class handDetector:  
-    def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
-        self.mode = mode  
-        self.maxHands = maxHands  
-        self.detectionCon = detectionCon  
-        self.trackCon = trackCon  
-        self.model_complexity = model_complexity  
+ def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
+  self.mode = mode  
+  self.maxHands = maxHands  
+  self.detectionCon = detectionCon  
+  self.trackCon = trackCon  
+  self.model_complexity = model_complexity  
         
 **we intialize an instance of the handDetector class with specified parameters.**
 - mode(bool): Flag, indicating the mode of the hand detection (default: False)
