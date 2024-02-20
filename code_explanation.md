@@ -14,7 +14,6 @@
 - import times
 
 ## 1st Code Snippet 
-## [ToC](#Table-of-Contents)
 * class handDetector:
   * def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
     * self.mode = mode  
@@ -34,6 +33,8 @@
 **The __init__ mothod is the constructor for the handDetector class. It initializes the instance variables with default or user-provided values.**
 
 **NOTE: in Python 'self; is a convention used as the first parameter in the method definitions of a class. It represents the instance of the class allowing the access and manipulation of the instances attributes and methods. Although any other name is usable, it is higly recommended to use self to enchance code readability and maintainability**
+
+## [ToC](#Table-of-Contents)
 
 ## 2nd Code Snippet
 ## [ToC](#Table-of-Contents)
@@ -58,5 +59,6 @@
      - *Hands*: This is the 'Hands' ca=lass within the ;hands; module. It is likely the main class for hand tracking in mediapipe and is used ofr initializing an instance of the hand tracking model.
    - *self.mp_drawing*: initializes the mdeiapipe drawing utilities module
    - *self.results*: initializes a variable to store the results of hand detection. It is initially set to 'None'.
-  
+     
+  ## [ToC](#Table-of-Contents)
 
