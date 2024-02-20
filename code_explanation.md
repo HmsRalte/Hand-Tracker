@@ -1,6 +1,7 @@
 # Table of Contents
 - [1st Code Snippet](#1st-Code-Snippet)
 - [2nd Code Snippet](#2nd-Code-Snippet)
+- [3rd Code Snippet](#3rd-Code-Snippet)
 
 
 ## Firstly, we have to install the libraries that are going to be needed
@@ -15,14 +16,14 @@
 
 ## 1st Code Snippet 
 ## [ToC](#Table-of-Contents)
-* class handDetector:
-  * def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
-    * self.mode = mode  
-    * self.maxHands = maxHands  
-    * self.detectionCon = detectionCon  
-    * self.trackCon = trackCon  
-    * self.model_complexity = model_complexity
----
+*     class handDetector:
+      def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
+        self.mode = mode  
+        self.maxHands = maxHands  
+        self.detectionCon = detectionCon  
+        self.trackCon = trackCon  
+        self.model_complexity = model_complexity
+---  
         
 **We intialize an instance of the handDetector class with specified parameters.**
 - *mode(bool)*: Flag, indicating the mode of the hand detection (default: False)
