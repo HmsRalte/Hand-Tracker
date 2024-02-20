@@ -60,8 +60,8 @@
    - *self.results*: initializes a variable to store the results of hand detection. It is initially set to 'None'.
      
 ## 3rd Code Snippet
-def findHands(self, image, draw=True):
-        imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+*     def findHands(self, image, draw=True):
+      imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         self.results = self.mp_hands.process(imageRGB)
         if self.results.multi_hand_landmarks and draw:
             for handLms in self.results.multi_hand_landmarks:
