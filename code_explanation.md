@@ -13,7 +13,7 @@
 - import mediapipe as mp
 - import times
 
-## 1st Code Snippet  
+## 1st Code Snippet  ## [ToC](#Table-of-Contents)
 * class handDetector:
   * def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5, model_complexity=1):  
     * self.mode = mode  
