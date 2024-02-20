@@ -21,7 +21,7 @@
     * self.detectionCon = detectionCon  
     * self.trackCon = trackCon  
     * self.model_complexity = model_complexity
-    ---
+---
         
 **We intialize an instance of the handDetector class with specified parameters.**
 - mode(bool): Flag, indicating the mode of the hand detection (default: False)
@@ -44,7 +44,7 @@
     * self.mp_drawing = mp.solutions.drawing_utils
     * self.results = None
       
-      ---
+---
   
 **We initialize the mediapipe Hands object for hand detection**
 
