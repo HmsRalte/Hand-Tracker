@@ -20,9 +20,10 @@
     * self.maxHands = maxHands  
     * self.detectionCon = detectionCon  
     * self.trackCon = trackCon  
-    * self.model_complexity = model_complexity  
+    * self.model_complexity = model_complexity
+    ---
         
-**we intialize an instance of the handDetector class with specified parameters.**
+**We intialize an instance of the handDetector class with specified parameters.**
 - mode(bool): Flag, indicating the mode of the hand detection (default: False)
 - maxHands(int): Maximum number of hands to be detected(default: 2)
 - detectionCon (float): Confidence threshold for hand detection (default: 0.5).
@@ -42,6 +43,7 @@
     * )
     * self.mp_drawing = mp.solutions.drawing_utils
     * self.results = None
+      ---
   
 **We initialize the mediapipe Hands object for hand detection**
 
