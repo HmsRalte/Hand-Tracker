@@ -16,6 +16,7 @@ class handDetector:
         self.detectionCon = detectionCon  
         self.trackCon = trackCon  
         self.model_complexity = model_complexity  
+        
 **we intialize an instance of the handDetector class with specified parameters.**
 - mode(bool): Flag, indicating the mode of the hand detection (default: False)
 - maxHands(int): Maximum number of hands to be detected(default: 2)
