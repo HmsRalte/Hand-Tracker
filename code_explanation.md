@@ -42,7 +42,8 @@
   * min_tracking_confidence=self.trackCon
     * )
     * self.mp_drawing = mp.solutions.drawing_utils
-   * self.results = None
+    * self.results = None
+      
       ---
   
 **We initialize the mediapipe Hands object for hand detection**
