@@ -24,11 +24,11 @@
 ---
         
 **We intialize an instance of the handDetector class with specified parameters.**
-- mode(bool): Flag, indicating the mode of the hand detection (default: False)
-- maxHands(int): Maximum number of hands to be detected(default: 2)
-- detectionCon (float): Confidence threshold for hand detection (default: 0.5).
-- trackCon (float): Confidence threshold for hand tracking (default : 0.5).
-- mcdel_complexity (int): Model complexity for hand deteection (default: 1)
+- *mode(bool)*: Flag, indicating the mode of the hand detection (default: False)
+- *maxHands(int)*: Maximum number of hands to be detected(default: 2)
+- *detectionCon (float)*: Confidence threshold for hand detection (default: 0.5).
+- *trackCon (float)*: Confidence threshold for hand tracking (default : 0.5).
+- *mcdel_complexity (int)*: Model complexity for hand deteection (default: 1)
 
 **The __init__ mothod is the constructor for the handDetector class. It initializes the instance variables with default or user-provided values.**
 
@@ -48,13 +48,13 @@
   
 **We initialize the mediapipe Hands object for hand detection**
 
-  - self.mp_hands: intializes a mediapipe hands object with specified parameters
-  - mp.solutions.hands.Hands: refers to 'Hands' class within the 'hands' module of mediapipe library.
-     - mp: reference to mediapipe at the moment of importing the library
-     - solutions: submodule within the mediapipe library containing pre-built solutions or models for various computer vision tasks.
-     - hands: wihtin 'soultuions' submodule, ;hands; specifically refers to the module responsible for hand tracking
-     - Hands: This is the 'Hands' ca=lass within the ;hands; module. It is likely the main class for hand tracking in mediapipe and is used ofr initializing an instance of the hand tracking model.
-   - self.mp_drawing: initializes the mdeiapipe drawing utilities module
-   - self.results: initializes a variable to store the results of hand detection. It is initially set to 'None'.
+  - *self.mp_hands*: intializes a mediapipe hands object with specified parameters
+  - *mp.solutions.hands.Hands*: refers to 'Hands' class within the 'hands' module of mediapipe library.
+     - *mp*: reference to mediapipe at the moment of importing the library
+     - *solutions*: submodule within the mediapipe library containing pre-built solutions or models for various computer vision tasks.
+     - *hands*: wihtin 'soultuions' submodule, ;hands; specifically refers to the module responsible for hand tracking
+     - *Hands*: This is the 'Hands' ca=lass within the ;hands; module. It is likely the main class for hand tracking in mediapipe and is used ofr initializing an instance of the hand tracking model.
+   - *self.mp_drawing*: initializes the mdeiapipe drawing utilities module
+   - *self.results*: initializes a variable to store the results of hand detection. It is initially set to 'None'.
   
 
