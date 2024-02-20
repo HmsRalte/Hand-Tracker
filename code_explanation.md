@@ -3,6 +3,7 @@
 - [2nd Code Snippet](#2nd-Code-Snippet)
 - [3rd Code Snippet](#3rd-Code-Snippet)
 - [4th Code Snippet](#4th-Code-Snippet)
+- [5th Code Snippet](#5th-Code-Snippet)
 
 
 ## Firstly, we have to install the libraries that are going to be needed
@@ -168,39 +169,39 @@
       if __name__ == "__main__":
           main()
 
-- detector = handDetector(): Intitializes the handDetector object
+- **detector = handDetector()**: Intitializes the handDetector object
 
-- while True: This is the main loop for capturing frames and handtracking, we initialize it as an infinite loop to continuously capture frames from the webcam while performing hand tracking.
+- **while True**: This is the main loop for capturing frames and handtracking, we initialize it as an infinite loop to continuously capture frames from the webcam while performing hand tracking.
 
-- success, image = cap.read(): captures a frame from the webcam using the 'cap.read()' method. 'success' indicates whether the frame was suceesfully captured, and 'image' contains the captured frame.
+- **success, image = cap.read()**: captures a frame from the webcam using the 'cap.read()' method. 'success' indicates whether the frame was suceesfully captured, and 'image' contains the captured frame.
 
-- image = detector.findHands(image): we process the frame to find hand landmarks using handDetector instance. we call the 'findHands' method of the 'handDetector' instance to detect and annottate hand landmarks on the captured frame.
+- **image = detector.findHands(image)**: we process the frame to find hand landmarks using handDetector instance. we call the 'findHands' method of the 'handDetector' instance to detect and annottate hand landmarks on the captured frame.
 
-- cTime = time.time() : here time.time() returns the current time in seconds since the epoch( reference point in time). Here it is used to get the current time('ctime') when processing the current frame.
+- **cTime = time.time()** : here time.time() returns the current time in seconds since the epoch( reference point in time). Here it is used to get the current time('ctime') when processing the current frame.
 
-- fps = 1/ (cTime - pTime): Computes the reciprocal of the time taken to process the current frame('cTime - pTime'). the result is assigned to the variable 'fps'.
+- **fps = 1/ (cTime - pTime)**: Computes the reciprocal of the time taken to process the current frame('cTime - pTime'). the result is assigned to the variable 'fps'.
 
-- pTime = cTime: updates the previous time ('ptime') to be equal to the current time, ensuring the next iteration of the loop, the previous time represents the time at the start of processing the next frame.
+- **pTime = cTime**: updates the previous time ('ptime') to be equal to the current time, ensuring the next iteration of the loop, the previous time represents the time at the start of processing the next frame.
 
-- cv2.putTex(): adds a text overlay to the image displaying the calculated frames per second.
+- **cv2.putTex()**: adds a text overlay to the image displaying the calculated frames per second.
 
-- cv2.imshow("Camera result", image): displays the annotated image in a window titled " Camera result."
+- **cv2.imshow("Camera result", image)**: displays the annotated image in a window titled " Camera result."
 
-- landmarks = detector.findPos(image): find and print the position of a specific landmark
+- **landmarks = detector.findPos(image)**: find and print the position of a specific landmark
 
-- if len(landmarks) != 0 : 
+- **if len(landmarks) != 0 **: 
 
-- print(landmarks[4]): Assuming landmarks[4] represent the tip of the index finger.
+- **print(landmarks[4])**: Assuming landmarks[4] represent the tip of the index finger.
 
 - We call the 'findPos' method of the 'handDetector' instance to find the positions of hand landmarks. If landmarks are found, it prints the position of a specific landmark ( assuming landmraks[4] represents the tip of the index finger).
 
-- cv2.waitkey(1): Waits for a key press with a dely of a millisecond. This delay allows the OpenCV window to handle events such as window closing.
+- **cv2.waitkey(1)**: Waits for a key press with a dely of a millisecond. This delay allows the OpenCV window to handle events such as window closing.
 
 - pTime and cTime are variables used to calculate and display the frames per second(fps)
 
-- cv2.VideoCapture(0): initializes webcam capture.
+- **cv2.VideoCapture(0)**: initializes webcam capture.
 
-- handDetector(): creates an instance of the 'handDetector' class for hand tracking.
+- **handDetector()**: creates an instance of the 'handDetector' class for hand tracking.
 
 - Inside the loop, each frame is read from the webcam, prcoessed to find hand landmarks and then displayed.
 
