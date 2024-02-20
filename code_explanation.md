@@ -35,14 +35,16 @@
 
 ## 2nd Code Snippet
 * self.mp_hands = mp.solutions.hands.Hands(
-           * self.mode, self.maxHands,
-           * model_complexity=self.model_complexity,
-           * min_detection_confidence=self.detectionCon,
-           * min_tracking_confidence=self.trackCon
-        * )
-        * self.mp_drawing = mp.solutions.drawing_utils
-        * self.results = None
+  * self.mode, self.maxHands,
+  * model_complexity=self.model_complexity,
+  * min_detection_confidence=self.detectionCon,
+  * min_tracking_confidence=self.trackCon
+    * )
+    * self.mp_drawing = mp.solutions.drawing_utils
+    * self.results = None
+  
 **We initialize the mediapipe Hands object for hand detection**
+
   - self.mp_hands: intializes a mediapipe hands object with specified parameters
   - mp.solutions.hands.Hands: refers to 'Hands' class within the 'hands' module of mediapipe library.
      - mp: reference to mediapipe at the moment of importing the library
