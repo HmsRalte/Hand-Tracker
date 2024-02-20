@@ -60,7 +60,8 @@
    - *self.results*: initializes a variable to store the results of hand detection. It is initially set to 'None'.
      
 ## 3rd Code Snippet
-*     def findHands(self, image, draw=True):
+## [ToC](#Table-of-Contents)
+      def findHands(self, image, draw=True):
       imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         self.results = self.mp_hands.process(imageRGB)
         if self.results.multi_hand_landmarks and draw:
@@ -76,12 +77,50 @@
        
 - imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB): converts the BGR image to RGB as the mediapipe Hands model expects RGB input ( if image is already in RGM format this is not needed)
 
-- self.results = self.mp_hands.process(imageRGB): Process the image using the mdeiapipe Hands model
+- self.results = self.mp_hands.process(imageRGB): Process the image using the mdeiapipe Hands model, reults are stored in self.results.
 
-- if self.reults.multi_hand_landmars and draw: Checks if there are multiple hand landmarks and drawing is enabled
+- if self.reults.multi_hand_landmars and draw: Checks if there are multiple hand landmarks and drawing is enabled, the landmarks and connections between them are drawn on the image.
 
 - for handLms in self.results.multi_hand_landmarks: Iterates through each set of landmarks for a different hands.
 
 - self.mp_drawing.draw_landmarks(image, handLms, mp.solutions.hands.HAND_CONNECTIONS): Draw landmarks and connections on the image
 
 - return image: Returns the image with hand landmarks drawn (if draw is True)
+
+## 4th Code Snippet
+## [Toc](#Table-of-Contents)
+        def findPos(self, image, handNumber=0, draw=True):
+              lmList = []
+              if self.results.multi_hand_landmarks:
+                  myHand = self.results.multi_hand_landmarks[handNumber]
+                  for id, lm in enumerate(myHand.landmark):
+                      h, w, c = image.shape
+                      cx, cy = int(lm.x * w), int(lm.y * h)
+                      lmList.append([id, cx, cy])
+                      if draw:
+                          cv2.circle(image, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+              return lmList
+
+**We define a method named findPos within the handDetector class. This method is designed to extract and return the positions(coordinates) of specific landmarks on a detected hand.**
+
+- def findPos(selfm image, handNumber=0, draw = True): Finds the position (coordinates) of landmarks on a detected hand.
+        - image: The input image (in BGR format) containing the detected hand.
+        - handNumber (int): The index of the hand to extract landmarks from. (default: 0)
+        - draw (bool): A flag indicating whether ot draw cricles at landmark positions.( default: True )
+- lmList: a list containing the landmark positions [ id, cx, cy] for the specified hand.
+- if self.results.multi_hand_landmarks: Checks if there are multiple hand landmarks in the results.
+- myHand = self.results.multi_hand_landmarks[handNumber]: Extract landmarks for the specified handNumber.
+- for id, lm in enumerate(myHand.landmark): iterate through each landmark in the specified hand and calculates the pixel coordinates(cx and cy) based on the image dimensions
+- h,w,c = image.shape:
+        - image.shape: returns the tuple representing the dimensions of the image.
+        - 'h'(height), 'w'(width), 'c'(number of channels) are assigned values from the tuples.
+        - commonly used to get height, width and number of channels of the image.
+- cx,cy = int(lm.x * w), int(lm.y * h)
+        - lm: landmark object with x and y attributes representing normalized coordinates in the range[0,1]
+        - lm.x * w: calculates the pixel position in the horizontal (x) direction.
+        - lm.y * h: calculates the pixel position in the verical (y) direction.
+        - int(): is used to convert the floating-point values to integers, as pixel position are whole numbers
+        - The line calculates the pixel coordinates of a landmark based on its normalized coordinates(lm.x and lm.y) and the dimensions of the image('w' and 'h'). The resulting 'cx' and 'cy' represent the position of the landmark in pixel units.
+- lmList.append([id, cx, cy]): Append the landmark id and coordinates to lmList
+- if draw: cv2.cricle( image, (cx, cy), 15, (255,0,255), cv2.FILLED): Draw a filled circle at the landmark position if draw is True
+- return lmList: reutrns the list of landmark positions
