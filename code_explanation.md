@@ -36,6 +36,7 @@
 **NOTE: in Python 'self; is a convention used as the first parameter in the method definitions of a class. It represents the instance of the class allowing the access and manipulation of the instances attributes and methods. Although any other name is usable, it is higly recommended to use self to enchance code readability and maintainability**
 
 ## 2nd Code Snippet
+## [ToC](#Table-of-Contents)
 * self.mp_hands = mp.solutions.hands.Hands(
   * self.mode, self.maxHands,
   * model_complexity=self.model_complexity,
