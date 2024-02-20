@@ -108,20 +108,108 @@
         - **image**: The input image (in BGR format) containing the detected hand.
         - **handNumber (int)**: The index of the hand to extract landmarks from. (default: 0)
         - **draw (bool)**: A flag indicating whether ot draw cricles at landmark positions.( default: True )
+  
 - **lmList**: a list containing the landmark positions [ id, cx, cy] for the specified hand.
+  
 - **if self.results.multi_hand_landmarks**: Checks if there are multiple hand landmarks in the results.
+  
 - **myHand = self.results.multi_hand_landmarks[handNumber]**: Extract landmarks for the specified handNumber.
+  
 - **for id, lm in enumerate(myHand.landmark)**: iterate through each landmark in the specified hand and calculates the pixel coordinates(cx and cy) based on the image dimensions
+  
 - **h,w,c = image.shape:**
         - **image.shape**: returns the tuple representing the dimensions of the image.
         - 'h'(height), 'w'(width), 'c'(number of channels) are assigned values from the tuples.
         - commonly used to get height, width and number of channels of the image.
+  
 - **cx,cy = int(lm.x * w), int(lm.y * h)**
         - **lm**: landmark object with x and y attributes representing normalized coordinates in the range[0,1]
         - **lm.x * w**: calculates the pixel position in the horizontal (x) direction.
         - **lm.y * h**: calculates the pixel position in the verical (y) direction.
         - **int()**: is used to convert the floating-point values to integers, as pixel position are whole numbers
         - The line calculates the pixel coordinates of a landmark based on its normalized coordinates(lm.x and lm.y) and the dimensions of the image('w' and 'h'). The resulting 'cx' and 'cy' represent the position of the landmark in pixel units.
+  
 - **lmList.append([id, cx, cy]):** Append the landmark id and coordinates to lmList
+  
 - **if draw: cv2.cricle( image, (cx, cy), 15, (255,0,255), cv2.FILLED)**: Draw a filled circle at the landmark position if draw is True
+  
 - **return lmList**: reutrns the list of landmark positions
+
+  ## 5th Code Snippet
+  ## [ToC](#Table-of-Contents)
+
+        def main():
+          pTime = 0
+          cTime = 0
+          cap = cv2.VideoCapture(0)
+          detector = handDetector()
+          while True:
+              success, image = cap.read()
+              image = detector.findHands(image)
+              cTime = time.time()
+              fps = 1 / (cTime - pTime)
+              pTime = cTime
+              image = cv2.flip(image, 1)
+              cv2.putText(
+                  image,
+                  str(int(fps)),
+                  (500,400),
+              cv2.FONT_HERSHEY_PLAIN,
+              3,
+              (120, 52, 40),
+              3,
+              )
+              cv2.imshow("Camera result", image)
+              landmarks = detector.findPos(image)
+              if len(landmarks) != 0:
+                  print(landmarks[4])
+              cv2.waitKey(1)
+              
+      if __name__ == "__main__":
+          main()
+
+- detector = handDetector(): Intitializes the handDetector object
+
+- while True: This is the main loop for capturing frames and handtracking, we initialize it as an infinite loop to continuously capture frames from the webcam while performing hand tracking.
+
+- success, image = cap.read(): captures a frame from the webcam using the 'cap.read()' method. 'success' indicates whether the frame was suceesfully captured, and 'image' contains the captured frame.
+
+- image = detector.findHands(image): we process the frame to find hand landmarks using handDetector instance. we call the 'findHands' method of the 'handDetector' instance to detect and annottate hand landmarks on the captured frame.
+
+- cTime = time.time() : here time.time() returns the current time in seconds since the epoch( reference point in time). Here it is used to get the current time('ctime') when processing the current frame.
+
+- fps = 1/ (cTime - pTime): Computes the reciprocal of the time taken to process the current frame('cTime - pTime'). the result is assigned to the variable 'fps'.
+
+- pTime = cTime: updates the previous time ('ptime') to be equal to the current time, ensuring the next iteration of the loop, the previous time represents the time at the start of processing the next frame.
+
+- cv2.putTex(): adds a text overlay to the image displaying the calculated frames per second.
+
+- cv2.imshow("Camera result", image): displays the annotated image in a window titled " Camera result."
+
+- landmarks = detector.findPos(image): find and print the position of a specific landmark
+
+- if len(landmarks) != 0 : 
+
+- print(landmarks[4]): Assuming landmarks[4] represent the tip of the index finger.
+
+- We call the 'findPos' method of the 'handDetector' instance to find the positions of hand landmarks. If landmarks are found, it prints the position of a specific landmark ( assuming landmraks[4] represents the tip of the index finger).
+
+- cv2.waitkey(1): Waits for a key press with a dely of a millisecond. This delay allows the OpenCV window to handle events such as window closing.
+
+- pTime and cTime are variables used to calculate and display the frames per second(fps)
+
+- cv2.VideoCapture(0): initializes webcam capture.
+
+- handDetector(): creates an instance of the 'handDetector' class for hand tracking.
+
+- Inside the loop, each frame is read from the webcam, prcoessed to find hand landmarks and then displayed.
+
+- The fps is calculated and displayed on the frame.
+
+- The image is horizontally flipped for better user experience.
+
+- The position of a specific landmark( eg. the tip of index finger) is printed in the console.
+
+- The loop continues until a key is pressed and the program exits when the user closes the window.
+
+## [ToC](#Table-of-Contents)
